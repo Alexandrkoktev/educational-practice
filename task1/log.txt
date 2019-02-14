@@ -1,0 +1,11 @@
+commit ce19a46fcddbbb1a1437fa6745cb88dd4851d49b (HEAD -> master)
+Author: Alexandr <skoktev@gmail.com>
+Date:   Thu Feb 14 19:55:12 2019 +0300
+
+    add status.txt
+
+commit c1782917948df605efc80fd92f8af1dc6bbd220d
+Author: Alexandr <skoktev@gmail.com>
+Date:   Thu Feb 14 19:53:33 2019 +0300
+
+    add .gitignore
