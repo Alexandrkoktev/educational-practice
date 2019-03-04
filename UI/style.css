@@ -1,47 +1,89 @@
-.header {
+header {
 	background-color: blue;
 	top:0px;
 	width: 100%;
-	height: 40px;
+	height: 7vh;
 	position: fixed;
-}
-.header-content{
-	height: 40px;
-	width: 100%;
-	
+	display: flex;
+	justify-content: space-between;
 }
 
 body {
 	margin: 0px;
 }
 
-.right_column{
+.right-column{
 	position: fixed;
 	height: 100%;
-	right: 10px;
-	top: 40px;
-	width: 17%;
+	right: 1vw;
+	top: 7vh;
+	width: 27vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 }
 .logo{
 	float: left;
-	margin: 8px 20px 10px 20px;
-	font-size: 20px;
+	margin: 1vh 2vh 1vh 2vh;
+	font-size: 4vh;
 	text-decoration: none;
 	color: black;
 }
-#signin{
-	position: absolute;
-	right: 20px;
-	margin: 10px 0px 0px 0px;
+.logo>a{
+	font-size: inherit;
+	text-decoration: inherit;
+	color:inherit;
+}
+.signin{
+	margin: 1vh;
+	display: inline-block;
+  	color: white;
+  	background-color: blue; 
+  	font-weight: 700;
+  	text-decoration: none;
+  	user-select: none;
+  	padding: .5em 1em;
+  	outline: none;
+  	border: 2px solid;
+  	border-radius: 1px;
+  	transition: 0.2s;
+}
+.signin:hover { 
+	background: skyblue;
+}
+.signin:active { 
+	background: white; 
+}
+.add{
+	margin: 1vh;
+	display: inline-block;
+  	color: white;
+ 	background-color: blue; 
+  	font-weight: 700;
+ 	text-decoration: none;
+ 	user-select: none;
+ 	padding: .5em 1em;
+ 	outline: none;
+  	border: 2px solid;
+  	border-radius: 1px;
+  	transition: 0.2s;
+}
+.add:hover { 
+	background: skyblue;
+}
+.add:active { 
+	background: white; 
 }
 .filters{
-	height: 300px;
+	height: 40vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+}
+.filters>input{
+	height: 4vh;
+	font-size: 100%;
+	width: 95%;
 }
 footer{
 	display: flex;
@@ -51,28 +93,125 @@ footer{
 footer>p{
 	color: gray;
 	text-align: center;
+	font-size: 3vw;
+	word-wrap: break-word;
 	margin: 0px;
 	border: 0px;
 }
 .wall{
-	padding-top: 40px;
-	width:80%;
+	padding-top: 7vh;
+	width:68vw;
 	height: 100%;
 }
-.photo{
-	margin:10px;
+.note{
+	margin:1vw;
 	border: 1px;
 	border-style: solid;
 	border-color: black;
 	display: flex;
 	flex-direction: column;
 }
+.photo-area{
+}
+.photo{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+ 	max-height: 60vh;
+ 	max-width:100%;
+ 	height: auto;
+ 	width: auto;
+  	margin-top: 0.5vw;
+  	margin-bottom: 0.5vw;
+}
 .info{
-	padding-right: 5px;
-	padding-left: 5px; 
+	font-size: 1em;
+	padding-right: 0.5vw;
+	padding-left: 0.5vw; 
 	display: flex;
 	justify-content: space-between;
 }
+.discription{
+	max-height: 15vh;
+	margin: 1vh;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.discription:hover{
+	max-height: unset;
+}
+.like{
+	width: 90%;
+	height: 90%;
+}
+.options{
+	height: 3vh;
+	margin: auto;
+	display: flex;
+	background-color: white;
+	border: 0px;
+	height: 80%; 
+	flex-direction: column;
+	justify-content: space-between;
+
+}
+.like-tags-line{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 5vh;
+	margin: 1%;
+}
+.circle{
+	width: 1.1vmin;
+	height: 1.1vmin;
+	background: gray;
+	-moz-border-radius: 0.4vmax;
+	-webkit-border-radius: 0.4vmax;
+}
 input{
 	font-size: 18px;
+}
+.load-more{
+	height: 10vh;
+	width: 100%;
+	border: 0px;
+	display: flex;
+	justify-content: center;
+}
+.arrow{
+	display: block;
+ 	max-height: 8vh;
+ 	max-width:100%;
+ 	height: auto;
+ 	width: auto;
+  	margin:0.5vh;
+}
+.load-area{
+	margin:1vw;
+	display: flex;
+	flex-direction: column;
+}
+.tags{
+	width: 100%;
+	margin-right: 1vw;
+	margin-left: 1vw;
+	display: flex;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+}
+.tag{
+	margin:0px;
+}
+.button-like{
+	border:0px;
+	background-color:white;  
+	width: 5vh;
+	height: 5vh;
+}
+.amount-likes{
+	font-size: 1em;
+	max-width: 20vw;
+	margin: 1vh 0vh 1vh 0vh;
 }
