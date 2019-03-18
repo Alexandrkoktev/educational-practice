@@ -29,7 +29,7 @@ class Posts {
     
     
         get(id) {
-        let post = photoPosts.find(a => a.id === id);
+        let post = this.photoPosts.find(a => a.id === id);
         return post || false;
     }
     
@@ -61,7 +61,7 @@ class Posts {
     remove(id){
         let post = photoPosts.findIndex(a => a.id === id);
         if(post !== -1){
-            photoPosts.splice(post,1);
+            this.photoPosts.splice(post,1);
             return true;
         }
         return false;
@@ -69,14 +69,13 @@ class Posts {
     
     add(post){
         if(Posts.validate(post)){
-            photoPosts.push(post);
+            this.photoPosts.push(post);
             return true;
         }
         return false;
     }
     
     addAll(newPosts){
-        if(newPosts.add){
             let invalidePosts = [];
             newPosts.forEach(item=>{
                 if(!this.add(item)){
@@ -84,8 +83,6 @@ class Posts {
                 }
             });
             return invalidePosts;
-        }
-        return false;
     }
 
     edit(id, edit){
@@ -501,7 +498,43 @@ console.log('main.editPhotoPost(\'4\',{tags: [\'nice\',], description: \'like th
 console.log(main.edit('4',{tags: ['nice',], description: 'like this moment',}));
 console.log('main.getPhotoPost(\'4\')');
 console.log(main.get('4'));
-console.log(main.addAll({}));
+console.log(main.addAll([{
+	id: '11',
+	description: '',
+	createdAt: new Date('2019-01-01T14:00:00'),
+	author: 'Alexandr',
+	photoLink: 'photo.png',
+	likes: [
+		'Alexandr',
+		'Vlad',
+		'Petia',
+		'Vera',
+	],
+	tags: [
+		'lp',
+		'nature',
+		'nofilter',
+	],
+},
+{
+	id: '12',
+	description: '',
+	createdAt: new Date('2019-01-12T14:00:00'),
+	author: 'Alexandr',
+	photoLink: 'photo.png',
+	likes: [
+		'Alexandr',
+		'Vlad',
+		'Petia',
+		'Vera',
+	],
+	tags: [
+		'lp',
+		'nature',
+		'nofilter',
+	],
+},]));
+console.log(main.getPage({},0,100));
 console.log(main.remove('2'));
 console.log(main.get('2'));
 console.log(main.getPage({},0,20));
