@@ -1,4 +1,135 @@
-let main = (function(){
+class Posts {
+    
+    constructor(photoPosts){
+        this.photoPosts = photoPosts.filter(item=>Posts.validate(item));
+    }
+
+    static _isStringArray(arr){
+        if(Array.isArray(arr)){
+            if(Array.prototype.every.call(arr,item=>typeof(item) === 'string')) {
+                return true;
+            }
+        } 
+        return false;
+    }
+    
+    static _validateEdit(edit) {
+        if(edit.hasOwnProperty('description') && typeof(edit.description) !== 'string'){
+            return false;
+        };
+        
+        if(edit.hasOwnProperty('photoLink') && (typeof(edit.photoLink) !== 'string' || edit.photoLink === '')){
+            return false;
+        };
+        if(edit.hasOwnProperty('tags') && !Posts._isStringArray(edit.tags)){
+            return false;
+        };
+        return true;
+    }
+    
+    
+        get(id) {
+        let post = photoPosts.find(a => a.id === id);
+        return post || false;
+    }
+    
+    static validate(photoPost) {
+        if(!photoPost.hasOwnProperty('id') || typeof(photoPost.id) !== 'string'){
+            return false;
+        }
+        if(!photoPost.hasOwnProperty('description') || typeof(photoPost.description) !== 'string' || photoPost.description>200){
+            return false;
+        }
+        if(!photoPost.hasOwnProperty('createdAt') || !(photoPost.createdAt instanceof Date)){
+            return false;
+        }
+        if(!photoPost.hasOwnProperty('author') || typeof(photoPost.author) !== 'string' || photoPost.author === ''){
+            return false;
+        }
+        if(!photoPost.hasOwnProperty('photoLink') || typeof(photoPost.photoLink) != 'string' || photoPost.photoLink === ''){
+            return false;
+        }
+        if(!photoPost.hasOwnProperty('likes') || !Posts._isStringArray(photoPost.likes)){
+            return false;
+        }
+        if(!photoPost.hasOwnProperty('tags') || !Posts._isStringArray(photoPost.tags)){
+            return false;
+        }
+        return true;
+    }
+
+    remove(id){
+        let post = photoPosts.findIndex(a => a.id === id);
+        if(post !== -1){
+            photoPosts.splice(post,1);
+            return true;
+        }
+        return false;
+    }
+    
+    add(post){
+        if(Posts.validate(post)){
+            photoPosts.push(post);
+            return true;
+        }
+        return false;
+    }
+    
+    addAll(newPosts){
+        if(newPosts.add){
+            let invalidePosts = [];
+            newPosts.forEach(item=>{
+                if(!this.add(item)){
+                    invalidePosts.push(item);
+                }
+            });
+            return invalidePosts;
+        }
+        return false;
+    }
+
+    edit(id, edit){
+        let post = this.get(id);
+        if(post && Posts._validateEdit(edit)){
+            if(edit.hasOwnProperty('description')){
+                post.description = edit.description;
+            };
+            if(edit.hasOwnProperty('photoLink')){
+                post.photoLink = edit.photoLink;
+            };
+            if(edit.hasOwnProperty('tags')){
+                post.tags = edit.tags; 
+            };
+            return true;
+        }
+        return false;
+    }
+    
+    getPage(filterConfig, skip = 0, top = 10){
+        let result = this.photoPosts.slice(0,this.photoPosts.length);
+        if(filterConfig.hasOwnProperty('author')){
+            result = result.filter(item=>item.author === filterConfig.author);
+        }
+        if(filterConfig.hasOwnProperty('dateFrom') && filterConfig.dateFrom instanceof Date){
+            result = result.filter(item=>item.createdAt > filterConfig.dateFrom);
+        }
+        if(filterConfig.hasOwnProperty('dateTo') && filterConfig.dateTo instanceof Date){
+            result = result.filter(item=>item.createdAt < filterConfig.dateTo);
+        }
+        if(filterConfig.hasOwnProperty('tags') && Posts._isStringArray(filterConfig.tags)){
+            for(let i = 0; i < filterConfig.tags.length;++i){
+                result = result.filter(item=>item.tags.find(item=>item.toLocaleLowerCase() === filterConfig.tags[i].toLocaleLowerCase()));
+            }
+        }
+        result.sort((item1,item2)=>item2.createdAt-item1.createdAt);
+        return result.splice(skip,top);
+	}
+	
+	clear(){
+		this.photoPosts.splice(0,photoPosts.length+1);
+	}
+
+}
 let photoPosts = [
 	{
 		id: '1',
@@ -348,139 +479,31 @@ let photoPosts = [
 		],
 	},
 ];
-
-function isStringArray(arr){
-	if(Array.isArray(arr)){
-		if(Array.prototype.every.call(arr,item=>typeof(item) == 'string')){
-		return true;
-	}
-	} 
-	return false;
-}
-
-function validatePhotoEdit(edit){
-	if(edit.hasOwnProperty('description') && typeof(edit.description) != 'string'){
-		return false;
-	};
-	
-	if(edit.hasOwnProperty('photoLink') && (typeof(edit.photoLink) != 'string' || edit.photoLink == '')){
-		return false;
-	};
-	if(edit.hasOwnProperty('tags') && !isStringArray(edit.tags)){
-		return false;
-	};
-	return true;
-};
-
-return {
-
-	getPhotoPost: function(id){
-	let post = photoPosts.find(a => a.id === id);
-	if(post){
-		return post;
-	}
-	return false;
-},
-
-validatePhotoPost: function(photoPost){
-	if(!photoPost.hasOwnProperty('id') || typeof(photoPost.id) != 'string'){
-		return false;
-	};
-	if(!photoPost.hasOwnProperty('description') || typeof(photoPost.description) != 'string'){
-		return false;
-	};
-	if(!photoPost.hasOwnProperty('createdAt') || !(photoPost.createdAt instanceof Date)){
-		return false;
-	};
-	if(!photoPost.hasOwnProperty('author') || typeof(photoPost.author) != 'string' || photoPost.author == ''){
-		return false;
-	};
-	if(!photoPost.hasOwnProperty('photoLink') || typeof(photoPost.photoLink) != 'string' || photoPost.photoLink == ''){
-		return false;
-	};
-	if(!photoPost.hasOwnProperty('likes') || !isStringArray(photoPost.likes)){
-		return false;
-	};
-	if(!photoPost.hasOwnProperty('tags') || !isStringArray(photoPost.tags)){
-		return false;
-	};
-	return true;
-},
-
-removePhotoPost: function(id){
-	let post = photoPosts.find(a => a.id === id);
-	if(post){
-		photoPosts.splice(photoPosts.indexOf(post),1);
-		return true;
-	}
-	return false;
-},
-
-addPhotoPost: function(post){
-	if(main.validatePhotoPost(post)){
-		photoPosts.push(post);
-		return true;
-	}
-	return false;
-},
-
-editPhotoPost: function(id, edit){
-	let post = main.getPhotoPost(id);
-	if(post && main.validatePhotoPost(post) && validatePhotoEdit(edit)){
-		if(edit.hasOwnProperty('description')){
-			post.description = edit.description;
-		};
-		if(edit.hasOwnProperty('photoLink')){
-			post.photoLink = edit.photoLink;
-		};
-		if(edit.hasOwnProperty('tags')){
-			post.tags = edit.tags; 
-		};
-		return true;
-	};
-	return false;
-},
-
-getPhotoPosts: function(filterConfig,skip = 0, top = 10){
-	let result = photoPosts;
-	if(filterConfig.hasOwnProperty('author')){
-		result = result.filter(item=>item.author === filterConfig.author);
-	};
-	if(filterConfig.hasOwnProperty('dateFrom') && filterConfig.dateFrom instanceof Date){
-		result = result.filter(item=>item.createdAt > filterConfig.dateFrom);
-	};
-	if(filterConfig.hasOwnProperty('dateTo') && filterConfig.dateTo instanceof Date){
-		result = result.filter(item=>item.createdAt < filterConfig.dateTo);
-	};
-	if(filterConfig.hasOwnProperty('tags') && isStringArray(filterConfig.tags)){
-		for(let i = 0; i < filterConfig.tags.length;++i){
-			result = result.filter(item=>item.tags.find(item=>item.toLocaleLowerCase() == filterConfig.tags[i].toLocaleLowerCase()));
-		};
-	}
-	result = result.sort((item1,item2)=>item2.createdAt-item1.createdAt);
-	return result.splice(skip,top);
-	
-},
-}
-}());
+console.log(typeof(''));
+let main = new Posts(photoPosts);
 console.log('main.getPhotoPosts({},0,100)');
-console.log(main.getPhotoPosts({},0,100));
+console.log(main.getPage({},0,100));
 console.log('main.getPhotoPost(\'2\')');
-console.log(main.getPhotoPost('2'));
+console.log(main.get('2'));
 console.log('main.validatePhotoPost(main.getPhotoPost(\'2\'))');
-console.log(main.validatePhotoPost(main.getPhotoPost('2')));
+console.log(Posts.validate(main.get('2')));
 console.log('main.editPhotoPost(\'2\',{tags:[\'nature\',],})');
-console.log(main.editPhotoPost('2',{tags:['nature',],}));
+console.log(main.edit('2',{tags:['nature',],}));
 console.log('main.getPhotoPost(\'2\')');
-console.log(main.getPhotoPost('2'));
+console.log(main.get('2'));
 console.log('main.getPhotoPosts({tags: \'natuRe\',})');
-console.log(main.getPhotoPosts({tags: 'natuRe',}));
+console.log(main.getPage({tags: 'natuRe',}));
 console.log('main.getPhotoPosts({tags: [\'natuRe\'],})');
-console.log(main.getPhotoPosts({tags: ['natuRe'],}));
+console.log(main.getPage({tags: ['natuRe'],}));
 console.log('main.getPhotoPost(\'4\')');
-console.log(main.getPhotoPost('4'));
+console.log(main.get('4'));
 console.log('main.editPhotoPost(\'4\',{tags: [\'nice\',], description: \'like this moment\',})');
-console.log(main.editPhotoPost('4',{tags: ['nice',], description: 'like this moment',}));
+console.log(main.edit('4',{tags: ['nice',], description: 'like this moment',}));
 console.log('main.getPhotoPost(\'4\')');
-console.log(main.getPhotoPost('4'));
-
+console.log(main.get('4'));
+console.log(main.addAll({}));
+console.log(main.remove('2'));
+console.log(main.get('2'));
+console.log(main.getPage({},0,20));
+main.clear();
+console.log(main.getPage({},0,20));
