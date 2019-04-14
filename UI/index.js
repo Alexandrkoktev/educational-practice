@@ -133,7 +133,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'sgdf',
+		photoLink: 'https://www.anime-planet.com/images/characters/chika-fujiwara-149354.jpg?t=1549070006',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -150,7 +150,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-02-01T12:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://i.ytimg.com/vi/0sLaYGjGIDo/maxresdefault.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -166,7 +166,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-03T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://vignette.wikia.nocookie.net/absolute/images/6/6c/1404725714539.jpg/revision/latest?cb=20141114181322&path-prefix=ru',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -184,7 +184,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://www.animeonline.cc/uploads/posts/2018-07/1530900014_004.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -201,7 +201,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2018-01-01T13:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://animeonline.su/zend/site/upload/screenshots/16166/100014/442020.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -218,7 +218,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-03-01T14:00:00'),
 		author: 'vlad',
-		photoLink: 'photo.png',
+		photoLink: 'https://steamuserimages-a.akamaihd.net/ugc/856101944688070842/853AAC1A4465F050856DDDD6DDDDDCACBBE405CC/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -234,7 +234,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2018-12-01T14:12:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://i.ytimg.com/vi/JgWOjwmf7LU/maxresdefault.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -250,7 +250,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2017-01-10T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa4Wm5Iv_I0-ViBz0baMbhTT2O8QY1ALY7UhhvTJRKdBk_IpAq',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -268,7 +268,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://i.pinimg.com/736x/83/aa/a6/83aaa66c4f3fd179b13f544b0a94a335.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -286,7 +286,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://animevost.club/_sf/9/36867113.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -304,7 +304,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://pm1.narvii.com/6395/b8c73337db89f13c478524e378590b806edb30c7_00.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -322,7 +322,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-12T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://i.ytimg.com/vi/B6comOyoWJk/maxresdefault.jpg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -340,7 +340,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'https://pa1.narvii.com/6520/deb037807fe01f6cee9142c1bc3cd09c65ef8522_hq.gif',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -358,7 +358,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -376,7 +376,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -394,7 +394,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -412,7 +412,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -430,7 +430,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'vlad',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -448,7 +448,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Alexandr',
 			'Vlad',
@@ -464,7 +464,7 @@ let photoPosts = [
 		description: '',
 		createdAt: new Date('2019-01-01T14:00:00'),
 		author: 'Alexandr',
-		photoLink: 'photo.png',
+		photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 		likes: [
 			'Petia',
 			'Vera',
@@ -503,7 +503,7 @@ console.log(main.addAll([{
 	description: '',
 	createdAt: new Date('2019-01-01T14:00:00'),
 	author: 'Alexandr',
-	photoLink: 'photo.png',
+	photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 	likes: [
 		'Alexandr',
 		'Vlad',
@@ -521,7 +521,7 @@ console.log(main.addAll([{
 	description: '',
 	createdAt: new Date('2019-01-12T14:00:00'),
 	author: 'Alexandr',
-	photoLink: 'photo.png',
+	photoLink: 'http://i3.beon.ru/45/20/2352045/59/83741959/1e42eb25ec05.jpeg',
 	likes: [
 		'Alexandr',
 		'Vlad',
@@ -538,5 +538,6 @@ console.log(main.getPage({},0,100));
 console.log(main.remove('2'));
 console.log(main.get('2'));
 console.log(main.getPage({},0,20));
-main.clear();
+
 console.log(main.getPage({},0,20));
+
