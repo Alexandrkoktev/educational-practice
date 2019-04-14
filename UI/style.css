@@ -74,6 +74,26 @@ body {
 .add:active { 
 	background: white; 
 }
+.logout{
+	margin: 1vh;
+	display: inline-block;
+  	color: white;
+ 	background-color: blue; 
+  	font-weight: 700;
+ 	text-decoration: none;
+ 	user-select: none;
+ 	padding: .5em 1em;
+ 	outline: none;
+  	border: 2px solid;
+  	border-radius: 1px;
+  	transition: 0.2s;
+}
+.logout:hover { 
+	background: skyblue;
+}
+.logout:active { 
+	background: white; 
+}
 .filters{
 	height: 40vh;
 	display: flex;
@@ -111,7 +131,13 @@ footer>p{
 	display: flex;
 	flex-direction: column;
 }
-.photo-area{
+#note{
+	margin:1vw;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
+	display: flex;
+	flex-direction: column;
 }
 .photo{
 	margin-left: auto;
@@ -214,4 +240,12 @@ input{
 	font-size: 1em;
 	max-width: 20vw;
 	margin: 1vh 0vh 1vh 0vh;
+}
+.userintf{
+	display: flex;
+
+}
+#user{
+	margin:auto;
+	font-size: 20px;
 }
