@@ -249,3 +249,140 @@ input{
 	margin:auto;
 	font-size: 20px;
 }
+.login-window{
+	width: 30%;
+	height: 30%;
+	position: fixed;
+	top: 25%;
+	right: 37%;
+	background-color: white;
+	border-radius: 3%;
+	display: none;
+	flex-direction: column;
+	justify-content: space-around;
+	border:solid;
+	border-color: blue;
+	border-width: 5px;
+}
+.login-window>form{
+	position: relative;
+	margin: auto;
+}
+.login-window>form>p>input{
+	width:100%;
+	position: relative;
+}
+.login-window>h3{
+	position: relative;
+	margin: auto;
+}
+.delete-window{
+	width: 30%;
+	height: 30%;
+	position: fixed;
+	display: none;
+	top: 25%;
+	right: 37%;
+	background-color: white;
+	border-radius: 3%;
+	flex-direction: column;
+	justify-content: space-around;
+	border:solid;
+	border-color: blue;
+	border-width: 5px;
+}
+.delete-window>form{
+	position: relative;
+	display: flex;
+	margin: 0px;
+	justify-content: space-around;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.delete-window>h3{
+	position: relative;
+	margin: auto;
+}
+.add-window{
+	width: 60%;
+	height: 70%;
+	position: fixed;
+	display: none;
+	top: 10%;
+	right: 25%;
+	background-color: white;
+	border-radius: 3%;
+	flex-direction: column;
+	justify-content: space-around;
+	border:solid;
+	border-color: blue;
+	border-width: 5px;
+	z-index: 15;
+}
+.add-window>form{
+	position: relative;
+	margin: auto;
+}
+.add-window>form>p>textarea{
+	width: 99%;
+}
+.add-window>form>p>input{
+	width: 100%;
+}
+.add-window>h3{
+	position: relative;
+	margin: auto;
+}
+.delete-or-edit{
+	width: 30%;
+	height: 30%;
+	position: fixed;
+	display: none;
+	top: 25%;
+	right: 37%;
+	background-color: white;
+	border-radius: 3%;
+	flex-direction: column;
+	justify-content: space-around;
+	border:solid;
+	border-color: blue;
+	border-width: 5px;
+}
+.delete-or-edit>form{
+	position: relative;
+	display: flex;
+	margin: 0px;
+	justify-content: space-around;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.edit-window{
+	width: 60%;
+	height: 70%;
+	position: fixed;
+	display: none;
+	top: 10%;
+	right: 25%;
+	background-color: white;
+	border-radius: 3%;
+	flex-direction: column;
+	justify-content: space-around;
+	border:solid;
+	border-color: blue;
+	border-width: 5px;
+	z-index: 15;
+}
+.edit-window>form{
+	position: relative;
+	margin: auto;
+}
+.edit-window>form>p>textarea{
+	width: 99%;
+}
+.edit-window>form>p>input{
+	width: 100%;
+}
+.edit-window>h3{
+	position: relative;
+	margin: auto;
+}

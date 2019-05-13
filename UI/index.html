@@ -8,22 +8,74 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+	<div class="login-window">
+		<h3>Login</h3>
+		<form class="login-form">
+			<p><input type="text" name="login" maxlength="30" placeholder="Login"></p>
+			<p><input type="password" name="password"maxlength="30" placeholder="Password"></p>
+			<button type="button" class="cancel-login">Close</button>
+			<button type="button" class="login-button">Log In</button>
+		</form>
+	</div>
+
+	<div class="delete-or-edit">
+		<form class="delete-or-edit-form">
+			<button type="button" class="cancel-delete-or-edit">Close</button>
+			<button class="delete-button" type="button">Delete</button>
+			<button class="edit-button" type="button">Edit</button>
+		</form>
+	</div>
+
+	<div class="delete-window">
+			<h3>Delete</h3>
+			<form class="delete-form">
+				<button type="button" class="cancel-delete">No</button>
+				<button type="button" class="submit-delete">Yes</button>
+			</form>
+	</div>
+
+	<div class="add-window">
+		<h3>Add</h3>
+		<form class="add-form">
+			<p><input type="text" name="path" maxlength="100" placeholder="Path"></p>
+			<p><input type="text" name="tags" maxlength="30" placeholder="#Tags"></p>
+			<p><textarea type="text" name="description" maxlength="300" placeholder="Description" rows="4"></textarea></p>
+			<button type="button" class="cancel-add">Close</button>
+			<button type="button" class="submit-add">Add</button>
+		</form>
+	</div>
+
+	<div class="edit-window">
+		<h3>Edit</h3>
+		<form class="edit-form">
+			<p><input type="text" name="path" maxlength="100" placeholder="Path"></p>
+			<p><input type="text" name="tags" maxlength="30" placeholder="#Tags"></p>
+			<p><textarea type="text" name="description" maxlength="300" placeholder="Description" rows="4"></textarea></p>
+			<button type="button" class="cancel-edit">Cancel</button>
+			<button type="button" class="submit-edit">Edit</button>
+		</form>
+	</div>
+
 	<header>
 		<button class="add" id="add">Add</button>
 		<div class="logo">
 		<a href="" >PhotoPortal</a>
 		</div>
-		<button class="signin">Sign in</button>
 	</header>
+
 	<main class="wall">
+
 	</main>
+
 	<div class="right-column">
-		<div class="filters">
-		<input type="date"></input>
-		<input type="date"></input>
-		<input placeholder="name"></input>
-		<input placeholder="tag"></input>
-		</div>
+		<form class="filters">
+			<input type="date" name="dateFrom" class="date-from-filter"></input>
+			<input type="date" name="dateTo" class="date-to-filter"></input>
+			<input placeholder="name" name="name" class="name-filter"></input>
+			<input placeholder="tag" name="tags" class="tags-filter"></input>
+		</form>
+
 		<footer>
 			<p>PhotoPortal</p>
 			<p>Koktev Alexandr</p>
@@ -33,15 +85,18 @@
 		</footer>
 	</div>
 </body>
+
 <template id='guest-temp'>
 	<button class="signin">Sign in</button>
 </template>
+
 <template id='user-temp'>
-<div class='userintf'>
-<p id='user'></p>
-<button class="logout">Log out</button>
-</div>
+	<div class='userintf'>
+		<p id='user'></p>
+		<button class="logout">Log out</button>
+	</div>
 </template>
+
 <template id="node-temp">
 	<div class="note">
 		<div class="info">
@@ -68,6 +123,7 @@
 		<p class="discription" id="discription"></p>
 	</div>
 </template>
+
 <template id="load-temp">
 	<div class="load-area" id="load">
 		<button class="load-more">
@@ -75,6 +131,8 @@
 		</button>
 		</div>
 </template>
+
 <script src = "index.js"></script>
 <script src = "view.js"></script>
+<script src = "script.js"></script>
 </html>
