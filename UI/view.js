@@ -14,6 +14,12 @@ class View{
         });
         node.querySelector('#tags').innerHTML = str;
         node.querySelector('#discription').innerHTML = post.description;
+        node.querySelectorAll('.button-like')[0].onclick = function(){
+            Controller.likePhotoPost(post);
+        };
+        node.querySelectorAll('.options')[0].onclick = function(){
+            View.showDeleteOrEditWindow(post);
+        };
         return node;
     }
     static showPost(wall, post){
@@ -26,11 +32,11 @@ class View{
         }
     }
     static showLoad(wall){
-        
         if(wall.querySelector('#load') === null){
             let load = document.querySelector('#load-temp');
             wall.appendChild(load.content.cloneNode(true));
         }
+        document.getElementsByClassName('load-more')[0].addEventListener('click', Controller.loadMore);
     }
     static removeNote(wall, id){
         let note = document.getElementById(id);
@@ -49,17 +55,25 @@ class View{
         for (let element of buttons) {
             element.setAttribute('style', 'display: relative');
         }
+        let likeButtons = document.getElementsByClassName('button-like');
+        for (let element of likeButtons) {
+            element.setAttribute('disabled', 'false');
+        }
     }
     static hideOptions(){
         let buttons = document.getElementsByClassName('options');
         for (let element of buttons) {
             element.setAttribute('style', 'display: none');
         }
+        let likeButtons = document.getElementsByClassName('button-like');
+        for (let element of likeButtons) {
+            element.setAttribute('disabled', 'true');
+        }
     }
-    static showGuestInteface(){
+    static showGuestInterface(){
         let head = document.querySelectorAll('header')[0];
         let logout = document.getElementsByClassName('userintf');
-        if(logout){
+        if(logout[0]){
             head.removeChild(logout[0]);
         }
         head.appendChild(document.querySelector('#guest-temp').content.cloneNode(true));
@@ -86,79 +100,68 @@ class View{
         logout.querySelector('#user').innerHTML = name;
         head.appendChild(logout);
     }
+    static showLogInWindow() {
+        document.getElementsByClassName('login-window')[0].setAttribute('style', 'display: flex');
+        document.querySelectorAll('.cancel-login')[0].onclick = function(){
+            View.hideLogInWindow();
+        };
+    }
+    static hideLogInWindow() {
+        document.getElementsByClassName('login-window')[0].setAttribute('style', 'display: none');
+    }
+    static showDeleteWindow(id) {
+        document.getElementsByClassName('delete-window')[0].setAttribute('style', 'display: flex');
+        document.querySelectorAll('.submit-delete')[0].onclick = function(){
+            Controller.deletePost(id);
+        };
+        document.querySelectorAll('.cancel-delete')[0].onclick = function(){
+            View.hideDeleteWindow();
+        };
+    }
+    static hideDeleteWindow() {
+        document.getElementsByClassName('delete-window')[0].setAttribute('style', 'display: none');
+    }
+    static showEditWindow(post) {
+        document.getElementsByClassName('edit-window')[0].setAttribute('style', 'display: flex');
+        document.getElementsByClassName('edit-form')[0].elements.path.value = post.photoLink;
+        document.getElementsByClassName('edit-form')[0].elements.description.value = post.description;
+        document.getElementsByClassName('edit-form')[0].elements.tags.value = post.tags.join('#');
+        document.querySelectorAll('.submit-edit')[0].onclick = function(){
+            Controller.editPost(post);
+        };
+        document.querySelectorAll('.cancel-edit')[0].onclick = function(){
+            View.hideEditWindow();
+        };
+    }
+    static hideEditWindow() {
+        document.getElementsByClassName('edit-window')[0].setAttribute('style', 'display: none');
+    }
+    static showAddWindow() {
+        document.getElementsByClassName('add-window')[0].setAttribute('style', 'display: flex');
+        document.querySelectorAll('.cancel-add')[0].onclick = function(){
+            View.hideAddWindow();
+        };
+    }
+    static hideAddWindow() {
+        document.getElementsByClassName('add-window')[0].setAttribute('style', 'display: none');
+    }
+    static showDeleteOrEditWindow(post) {
+        document.getElementsByClassName('delete-or-edit')[0].setAttribute('style', 'display: flex');
+        document.querySelectorAll('.delete-button')[0].onclick = function(){
+            View.showDeleteWindow(post.id)
+            View.hideDeleteOrEditWindow();
+        };
+        document.querySelectorAll('.edit-button')[0].onclick = function(){
+            View.showEditWindow(post);
+            View.hideDeleteOrEditWindow();
+        };
+        document.querySelectorAll('.cancel-delete-or-edit')[0].onclick = function(){
+            View.hideDeleteOrEditWindow();
+        };
+    }
+    static hideDeleteOrEditWindow() {
+        document.getElementsByClassName('delete-or-edit')[0].setAttribute('style', 'display: none');
+    }
 }
 let wall = document.getElementsByClassName("wall")[0];
-View.showPost(wall, {
-    id: '20',
-    description: 'Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.',
-    createdAt: new Date('2019-01-01T14:00:00'),
-    author: 'Alexandr',
-    photoLink: 'img/02.jpg',
-    likes: [
-        'Petia',
-        'Vera',
-    ],
-    tags: [
-        'lp',
-        'nature',
-        'nofilter',
-    ],
-});
-View.hideAdd();
-View.showAdd();
-View.hideOptions();
-View.showPost(wall, {
-    id: '19',
-    description: 'Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.',
-    createdAt: new Date('2019-01-01T14:00:00'),
-    author: 'Alexandr',
-    photoLink: 'img/02.jpg',
-    likes: [
-        'Petia',
-        'Vera',
-    ],
-    tags: [
-        'lp',
-        'nature',
-        'nofilter',
-    ],
-},);
-View.showPost(wall, {
-    id: '18',
-    description: 'Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.',
-    createdAt: new Date('2019-01-01T14:00:00'),
-    author: 'Alexandr',
-    photoLink: 'img/02.jpg',
-    likes: [
-        'Petia',
-        'Vera',
-    ],
-    tags: [
-        'lp',
-        'nature',
-        'nofilter',
-    ],
-},);
-View.showLoad(wall);
-View.showUserInteface('Ptax');
-View.replacePost(wall, {
-    id: '20',
-    description: 'Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.Oceanic dolphins or Delphinidae are a widely distributed family of dolphins that live in the sea. Thirty extant species are described. They include several big species whose common names contain "whale" rather than "dolphin", such as the killer whale and the pilot whales. Delphinidae is a family within the superfamily Delphinoidea, which also includes the porpoises (Phocoenidae) and the Monodontidae (beluga whale and narwhal). River dolphins are relatives of the Delphinoidea.',
-    createdAt: new Date('2019-01-01T14:00:00'),
-    author: 'Roma',
-    photoLink: 'img/02.jpg',
-    likes: [
-        'Petia',
-        'Vera',
-    ],
-    tags: [
-        'lp',
-        'nature',
-        'nofilter',
-    ],
-});
-View.removeAll(wall);
-let a = main.getPage({});
-a.forEach(element=>View.showPost(wall,element));
-View.showLoad(wall);
 
